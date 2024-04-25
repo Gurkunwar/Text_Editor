@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../public/styles.css"> -->
+    <style>
+        body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+textarea, select{
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 10px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    width: 300px;
+}
+button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.translation{
+    margin: 20px auto;
+    max-width: 800px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.error{
+    color: red;
+    margin: 10px 0;
+}
+    </style>
+</head>
+<body>
+    <h1>Text Translator</h1>
+    <form action="/translate" method="post">
+        <textarea name="text" placeholder="Enter text" required></textarea>
+        <select name="targetLang" required>
+            <option value="" disabled selected>Select Language</option>
+            <option value="cs">Czech</option>
+            <option value="it">Italian</option>
+        </select>
+        <button type="submit">Translate</button>
+    </form>
+
+    <% if(translation) { %>
+        <div class="translation">
+            <h2>Translation:</h2>
+
+            <p><%= translation %></p>
+        </div>
+    <%} %>
+    <% if(error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+</body>
+</html>
